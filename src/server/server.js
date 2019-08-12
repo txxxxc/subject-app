@@ -47,8 +47,6 @@ const app = express();
 // responsible for fetching the data for those types.
 const server = new ApolloServer({ typeDefs, resolvers });
 
-app.use(express.static(path.join("./", "dist")));
-
 app.get("/api", (req, res) => {
   res.send({ api: "test" });
 });
