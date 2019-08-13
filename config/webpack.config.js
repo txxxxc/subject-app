@@ -31,7 +31,10 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".jsx"],
+    alias: {
+      client: path.resolve(__dirname, "../src/client")
+    }
   },
   devServer: {
     inline: true

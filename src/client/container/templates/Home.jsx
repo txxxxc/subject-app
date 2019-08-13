@@ -2,9 +2,9 @@ import React from "react";
 import { useQuery } from "react-apollo-hooks";
 import gql from "graphql-tag";
 import styled from "styled-components";
-import Nav from "../organisms/Nav";
-import Result from "../organisms/Result";
-import Simulator from "../organisms/Simulator";
+import Nav from "client/container/organisms/Nav";
+import Result from "client/container/organisms/Result";
+import Simulator from "client/container/organisms/Simulator";
 
 const TEST = gql`
   {
