@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
 const GridDummy = props => {
-  return <Child item xs={props.xs} key={props.key} />;
+  return <Child item xs={props.xs} />;
 };
 
 const Child = styled(Grid)`

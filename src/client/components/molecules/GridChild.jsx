@@ -9,7 +9,7 @@ const colorGen = () => {
 };
 
 const GridChild = props => {
-  return <Child item xs={props.xs} key={props.key} />;
+  return <Child item xs={props.xs} />;
 };
 
 const Child = styled(Grid)`
