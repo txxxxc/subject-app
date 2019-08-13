@@ -16,7 +16,6 @@ const TEST = gql`
 
 const Home = () => {
   const { data, error, loading } = useQuery(TEST);
-  console.log(data, error, loading);
   return (
     <Template>
       <Nav />

@@ -1,80 +1,67 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
-
-const colorGen = () => {
-  return `
-    background: ${"#" + Math.floor(Math.random() * 16777215).toString(16)};
-  `;
-};
+import Typography from "@material-ui/core/Typography";
+import GridChild from "client/components/molecules/GridChild";
+import GridFlex from "client/components/molecules/GridFlex";
+import GridDummy from "client/components/molecules/GridDummy";
+import { amBlocks, pmBlocks } from "client/config/blocks";
 
 const Simulator = () => {
-  const [a, b] = useState('')
-  console.log(
-    `background: ${"#" + Math.floor(Math.random() * 16777215).toString(16)};`
-  );
-  const amBlocks = [
-    ['one-a', 'two-b', 'three-a', 'two-a', 'three-b'],
-    ['two-a', 'one-a', 'two-a', 'two-b', 'two-b'],
-    ['three-a', 'one-b', 'four-b', 'one-a', '6'],
-    ['5-a', 'four-b', 'four-a', '5-a', 'four-b',],
-  ]
-  const pmBlocks = [
-    ['5-a', 'four-b', '5-a', 'four-a', '5-b',],
-    ['6', '6', '5-b', 'three-b', 'one-b',],
-    ['LHR', 'three-b', 'one-b', '6', 'three-a',]
-  ]
-  const initializeAmGrid = (blocks) => {
+  const [one_a, setOneA] = useState("");
+  const [one_b, setOneB] = useState("");
+  const [two_a, setTowA] = useState("");
+  const [two_b, setTowB] = useState("");
+  const [three_a, setThreeA] = useState("");
+  const [three_b, setThreeB] = useState("");
+  const [four_a, setFourA] = useState("");
+  const [four_b, setFourB] = useState("");
+  const [five_a, setFiveA] = useState("");
+  const [five_b, setFiveB] = useState("");
+  const [six, setSix] = useState("");
+  const [LHR, setLHR] = useState("");
+  const initializeAmGrid = blocks => {
     const amItems = [];
-    blocks.map((block,index) => {
-      amItems.push(
-        <GridChild item xs={1} key={`am-first-${index}`}>
-        </GridChild>
-      )
-      block.map((value,i) => {
+    blocks.map((block, index) => {
+      amItems.push(<GridDummy item xs={1} key={`am-first-${index}`} />);
+      block.map((value, i) => {
         amItems.push(
           <GridChild item xs={2} key={`${index}-${i}`}>
-            {`${value}`+ 'block'}
+            {eval(value)}
           </GridChild>
-        )
-      })
-      amItems.push(
-        <GridChild item xs={1} key={`am-last-${index}`}>
-        </GridChild>
-      )
-    })
+        );
+      });
+      amItems.push(<GridDummy item xs={1} key={`am-last-${index}`} />);
+    });
     return amItems;
   };
-  const intializePmGrid = (block) => {
+  const initializePmGrid = blocks => {
     const pmItems = [];
     blocks.map((block, index) => {
-      pmItems.push(
-        <GridChild item xs={1} key={`pm-first-${index}`}>
-        </GridChild>
-      )
+      pmItems.push(<GridDummy item xs={1} key={`pm-first-${index}`} />);
       block.map((value, i) => {
         pmItems.push(
           <GridChild item xs={2} key={`${index}-${i}`}>
-            {`${value}`}
+            <>
+              <h1>{value}</h1>
+              <p>{eval(value)}</p>
+            </>
           </GridChild>
-        )
-      })
-      pmItems.push(
-        <GridChild item xs={1} key={`pm-last-${index}`}>
-        </GridChild>
-      )
-    })
+        );
+      });
+      pmItems.push(<GridDummy item xs={1} key={`pm-last-${index}`} />);
+    });
     return pmItems;
-  }
-  const amResult = initializeAmGrid(amBlocks)
-  const pmResult = initializeAmGrid(pmBlocks)
+  };
+  const amResult = initializeAmGrid(amBlocks);
+  const pmResult = initializePmGrid(pmBlocks);
   return (
     <Container>
-      <GridParent container justify="center">
+      <Grid container justify="center">
         {amResult}
-      <GridChild item xs={12} key='12'></GridChild>
+        <GridFlex />
         {pmResult}
-      </GridParent>
+      </Grid>
     </Container>
   );
 };
@@ -86,20 +73,5 @@ const Container = styled.div`
   background: white;
   margin-left: 5%;
 `;
-const GridParent = styled(Grid)`
-  height: 100px;
-  width: 100%;
-`;
-const GridChild = styled(Grid)`
-  ${() => colorGen()}
-  height: 100%;
-`;
 
 export default Simulator;
-// if (i = 5) {
-//   items.push(
-//     <GridChild item xs={12} key='flex'>
-//       hoge
-//             </GridChild>
-//   );
-// } else { }
