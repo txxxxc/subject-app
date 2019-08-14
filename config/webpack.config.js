@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.js",
@@ -25,10 +26,12 @@ module.exports = {
       }
     ]
   },
+  devtool: false,
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html"
-    })
+    }),
+    new webpack.SourceMapDevToolPlugin({})
   ],
   resolve: {
     extensions: [".js", ".jsx"],

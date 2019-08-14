@@ -8,7 +8,7 @@ import GridDummy from "client/components/molecules/GridDummy";
 import { amBlocks, pmBlocks } from "client/config/blocks";
 
 const Simulator = () => {
-  const [I_A, setI_A] = useState("aaa");
+  const [I_A, setI_A] = useState("");
   const [I_B, setI_B] = useState("");
   const [II_A, setII_A] = useState("");
   const [II_B, setII_B] = useState("");
@@ -32,6 +32,7 @@ const Simulator = () => {
             key={`${index}-${i}`}
             value={value}
             block={value}
+            setBlock={eval(`set${value}`)}
           >
             {eval(value)}
           </GridChild>
@@ -47,7 +48,14 @@ const Simulator = () => {
       pmItems.push(<GridDummy item xs={1} key={`pm-first-${index}`} />);
       block.map((value, i) => {
         pmItems.push(
-          <GridChild item xs={2} key={`${index}-${i}`} value={value}>
+          <GridChild
+            item
+            xs={2}
+            key={`${index}-${i}`}
+            value={value}
+            block={value}
+            setBlock={eval(`set${value}`)}
+          >
             {eval(value)}
           </GridChild>
         );

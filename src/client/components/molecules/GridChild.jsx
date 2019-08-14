@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -11,20 +11,21 @@ import Body from "client/components/molecules/TableBody";
 import Head from "client/components/molecules/TableHead";
 
 const GridChild = props => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [isLoading, setState] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
+  console.log("hoge");
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const test = () => {
-    console.log("this is test");
     handleOpen();
   };
-
+  props.setBlock("test");
   return (
     <Child item xs={props.xs}>
       <CardContainer>
@@ -42,7 +43,7 @@ const GridChild = props => {
         <ModalContainer>
           <Table>
             <Head />
-            <Body block={props.block} />
+            <Body value={props.value} />
           </Table>
         </ModalContainer>
       </Modal>

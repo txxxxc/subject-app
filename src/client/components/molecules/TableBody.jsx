@@ -7,6 +7,7 @@ import TableBody from "@material-ui/core/TableBody";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Button from "@material-ui/core/Button";
 
 const GET_SUBJECT = gql`
   query($block: String!) {
@@ -20,22 +21,26 @@ const GET_SUBJECT = gql`
 `;
 
 const Body = props => {
-  console.log(props.block);
+  console.log("hoge");
   const { data, error, loading } = useQuery(GET_SUBJECT, {
     variables: { block: props.block }
   });
+
   if (loading) {
     return <div>loading</div>;
   }
   console.log();
   return (
     <TableBody>
-      <TableRow>
-        <ListItem button>
-          <TableCell>{data.subject[0].class}</TableCell>
-          <TableCell>{data.subject[0].name}</TableCell>
-          <TableCell>{data.subject[0].credit}</TableCell>
-        </ListItem>
+      <TableRow
+        hover
+        onClick={() => {
+          // props.setBlock(props.value);
+        }}
+      >
+        <TableCell>{data.subject[0].class}</TableCell>
+        <TableCell>{data.subject[0].name}</TableCell>
+        <TableCell>{data.subject[0].credit}</TableCell>
       </TableRow>
     </TableBody>
   );
