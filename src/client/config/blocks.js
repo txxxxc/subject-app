@@ -1,11 +1,11 @@
 export const amBlocks = [
-  ["one_a", "two_b", "three_a", "two_a", "three_b"],
-  ["two_a", "one_a", "two_a", "two_b", "two_b"],
-  ["three_a", "one_b", "four_b", "one_a", "six"],
-  ["five_a", "four_b", "four_a", "five_a", "four_b"]
+  ["I_A", "II_B", "III_A", "II_A", "III_B"],
+  ["II_A", "I_A", "II_A", "II_B", "II_B"],
+  ["III_A", "I_B", "IV_B", "I_A", "VI"],
+  ["V_A", "IV_B", "IV_A", "V_A", "IV_B"]
 ];
 export const pmBlocks = [
-  ["five_a", "four_b", "five_a", "four_a", "five_b"],
-  ["six", "six", "five_b", "three_b", "one_b"],
-  ["LHR", "three_b", "one_b", "six", "three_a"]
+  ["V_A", "IV_B", "V_A", "IV_A", "V_B"],
+  ["VI", "VI", "V_B", "III_B", "I_B"],
+  ["LHR", "III_B", "I_B", "VI", "III_A"]
 ];

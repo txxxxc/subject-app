@@ -17,7 +17,7 @@ const SubFlex = styled(Grid)`
 `;
 
 const MainFlex = styled(SubFlex)`
-  background: black;
+  border: 1px black;
 `;
 
 export default GridFlex;

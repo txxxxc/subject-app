@@ -8,17 +8,17 @@ import GridDummy from "client/components/molecules/GridDummy";
 import { amBlocks, pmBlocks } from "client/config/blocks";
 
 const Simulator = () => {
-  const [one_a, setOneA] = useState("");
-  const [one_b, setOneB] = useState("");
-  const [two_a, setTowA] = useState("");
-  const [two_b, setTowB] = useState("");
-  const [three_a, setThreeA] = useState("");
-  const [three_b, setThreeB] = useState("");
-  const [four_a, setFourA] = useState("");
-  const [four_b, setFourB] = useState("");
-  const [five_a, setFiveA] = useState("");
-  const [five_b, setFiveB] = useState("");
-  const [six, setSix] = useState("");
+  const [I_A, setI_A] = useState("aaa");
+  const [I_B, setI_B] = useState("");
+  const [II_A, setII_A] = useState("");
+  const [II_B, setII_B] = useState("");
+  const [III_A, setIII_A] = useState("");
+  const [III_B, setIII_B] = useState("");
+  const [IV_A, setIV_A] = useState("");
+  const [IV_B, setIV_B] = useState("");
+  const [V_A, setV_A] = useState("");
+  const [V_B, setV_B] = useState("");
+  const [VI, setVI] = useState("");
   const [LHR, setLHR] = useState("");
   const initializeAmGrid = blocks => {
     const amItems = [];
@@ -26,7 +26,13 @@ const Simulator = () => {
       amItems.push(<GridDummy item xs={1} key={`am-first-${index}`} />);
       block.map((value, i) => {
         amItems.push(
-          <GridChild item xs={2} key={`${index}-${i}`}>
+          <GridChild
+            item
+            xs={2}
+            key={`${index}-${i}`}
+            value={value}
+            block={value}
+          >
             {eval(value)}
           </GridChild>
         );
@@ -41,11 +47,8 @@ const Simulator = () => {
       pmItems.push(<GridDummy item xs={1} key={`pm-first-${index}`} />);
       block.map((value, i) => {
         pmItems.push(
-          <GridChild item xs={2} key={`${index}-${i}`}>
-            <>
-              <h1>{value}</h1>
-              <p>{eval(value)}</p>
-            </>
+          <GridChild item xs={2} key={`${index}-${i}`} value={value}>
+            {eval(value)}
           </GridChild>
         );
       });

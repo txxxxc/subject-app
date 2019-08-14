@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Result = () => {
@@ -6,11 +6,11 @@ const Result = () => {
 };
 
 const Container = styled.div`
-  height: 300px;
+  height: 40%;
   width: 70%;
   margin-top: 5%;
   margin-left: 5%;
   background: white;
 `;
 
-export default Container;
+export default Result;

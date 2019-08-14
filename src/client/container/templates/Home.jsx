@@ -29,7 +29,7 @@ const Home = () => {
 };
 
 const Template = styled.div`
-  height: 800px;
+  height: 1600px;
   width: 100%;
   margin: 0 auto;
   background: ＃F4F5F7;
@@ -38,7 +38,7 @@ const Template = styled.div`
 const Content = styled.div`
   display: flex;
   width: 100%;
-  height: 90%;
+  height: 50%;
 `;
 const Right = styled.div`
   height: 100%;

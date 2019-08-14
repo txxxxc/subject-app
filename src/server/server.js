@@ -6,15 +6,15 @@ const path = require("path");
 // from an existing data source like a REST API or database.
 const subjects = [
   {
-    name: "数学",
-    block: "1",
-    class: "math",
+    name: "数学A",
+    block: "I_A",
+    class: "数学",
     credit: 1
   },
   {
     name: "国語",
-    block: "2",
-    class: "National language",
+    block: "I_B",
+    class: "国語",
     credit: 1
   }
 ];
@@ -30,7 +30,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    subjects: [Subject]
+    subjects: [Subject]!
+    subject(block: String): [Subject]
   }
 `;
 
@@ -38,7 +39,13 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    subjects: () => subjects
+    subjects: () => subjects,
+    subject: (_, args) => {
+      console.log(args.block);
+      return subjects.filter(subject => {
+        return subject.block === args.block;
+      });
+    }
   }
 };
 const app = express();

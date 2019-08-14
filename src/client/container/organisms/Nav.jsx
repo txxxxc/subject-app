@@ -6,7 +6,7 @@ const Nav = () => {
 };
 
 const Container = styled.div`
-  height: 10%;
+  height: 5%;
   width: 100%;
   border: grey;
 `;
