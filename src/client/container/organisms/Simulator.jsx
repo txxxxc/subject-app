@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
 import GridChild from "client/components/molecules/GridChild";
 import GridFlex from "client/components/molecules/GridFlex";
 import GridDummy from "client/components/molecules/GridDummy";

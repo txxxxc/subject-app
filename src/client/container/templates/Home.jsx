@@ -1,27 +1,18 @@
 import React from "react";
-import { useQuery } from "react-apollo-hooks";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import Nav from "client/container/organisms/Nav";
 import Result from "client/container/organisms/Result";
 import Simulator from "client/container/organisms/Simulator";
-
-const TEST = gql`
-  {
-    subjects {
-      name
-    }
-  }
-`;
+import Browser from "client/container/organisms/Browser";
 
 const Home = () => {
-  const { data, error, loading } = useQuery(TEST);
   return (
     <Template>
       <Nav />
       <Content>
         <Simulator />
-        <Right />
+        <Browser />
       </Content>
       <Result />
     </Template>
@@ -39,12 +30,6 @@ const Content = styled.div`
   display: flex;
   width: 100%;
   height: 50%;
-`;
-const Right = styled.div`
-  height: 100%;
-  width: 20%;
-  background: white;
-  margin-left: 5%;
 `;
 export default Home;
 

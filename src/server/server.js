@@ -6,62 +6,182 @@ const path = require("path");
 // from an existing data source like a REST API or database.
 const subjects = [
   {
-    name: "国語A",
+    name: "道徳",
     block: "I_A",
     class: "国語",
     credit: 1
   },
   {
-    name: "数学A",
+    name: "道徳",
     block: "I_A",
     class: "数学",
     credit: 1
   },
   {
-    name: "社会A",
+    name: "道徳",
     block: "I_A",
     class: "社会",
     credit: 1
   },
   {
-    name: "理科A",
+    name: "道徳",
     block: "I_A",
     class: "理科",
     credit: 1
   },
   {
-    name: "英語A",
+    name: "道徳",
     block: "I_A",
     class: "英語",
     credit: 1
   },
   {
-    name: "国語B",
+    name: "道徳",
     block: "I_B",
     class: "国語",
     credit: 1
   },
   {
-    name: "数学B",
+    name: "道徳",
     block: "I_B",
     class: "数学",
     credit: 1
   },
   {
-    name: "社会B",
+    name: "道徳",
     block: "I_B",
     class: "社会",
     credit: 1
   },
   {
-    name: "理科B",
+    name: "道徳",
     block: "I_B",
     class: "理科",
     credit: 1
   },
   {
-    name: "英語B",
+    name: "道徳",
     block: "I_B",
+    class: "英語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_A",
+    class: "国語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_A",
+    class: "数学",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_A",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_A",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_A",
+    class: "英語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_B",
+    class: "国語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_B",
+    class: "数学",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_B",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_B",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "II_B",
+    class: "英語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_A",
+    class: "国語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_A",
+    class: "数学",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_A",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_A",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_A",
+    class: "英語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_B",
+    class: "国語",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_B",
+    class: "数学",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_B",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_B",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "道徳",
+    block: "III_B",
     class: "英語",
     credit: 1
   }
@@ -77,9 +197,22 @@ const typeDefs = gql`
     credit: Int
   }
 
+  type SearchKeywords {
+    type: String
+    value: String
+  }
+
+  type Words {
+    word: [SearchKeywords]
+  }
+
   type Query {
     subjects: [Subject]!
-    subject(block: String): [Subject]
+    searchSubjectsByBlock(block: String): [Subject]
+    searchSubjectsByName(name: String): [Subject]
+    searchSubjectsByClass(class: String): [Subject]
+    searchSubjectsByCredit(credit: String): [Subject]
+    searchSubject(type: String, value: String): [Subject]
   }
 `;
 
@@ -88,10 +221,37 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     subjects: () => subjects,
-    subject: (_, args) => {
+    searchSubjectsByBlock: (_, args) => {
       console.log(args.block);
       return subjects.filter(subject => {
         return subject.block === args.block;
+      });
+    },
+    searchSubjectsByName: (_, args) => {
+      console.log(args.name);
+      return subjects.filter(subject => {
+        return subject.name === args.name;
+      });
+    },
+    searchSubjectsByClass: (_, args) => {
+      console.log(args.class);
+      return subjects.filter(subject => {
+        return subject.class === args.class;
+      });
+    },
+    searchSubjectsByCredit: (_, args) => {
+      console.log(args.credit);
+      return subjects.filter(subject => {
+        return subject.credit === args.credit;
+      });
+      r;
+    },
+    searchSubject: (_, args) => {
+      currentSubjects = [];
+      args.queries.map(query => {
+        if (query.type === "block") {
+        } else if (query.type === "name") {
+        }
       });
     }
   }
