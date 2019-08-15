@@ -21,7 +21,7 @@ const GET_SUBJECT = gql`
 `;
 
 const Body = props => {
-  console.log("hoge");
+
   const { data, error, loading } = useQuery(GET_SUBJECT, {
     variables: { block: props.block }
   });
@@ -32,7 +32,9 @@ const Body = props => {
   console.log();
   return (
     <TableBody>
-      <TableRow hover>
+      <TableRow hover onClick={() => {
+        props.setBlock(data.subject[0].name)
+      }}>
         <TableCell>{data.subject[0].class}</TableCell>
         <TableCell>{data.subject[0].name}</TableCell>
         <TableCell>{data.subject[0].credit}</TableCell>
