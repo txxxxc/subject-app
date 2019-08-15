@@ -43,7 +43,7 @@ const GridChild = props => {
         <ModalContainer>
           <Table>
             <Head />
-            <Body value={props.value} />
+            <Body value={props.value} block={props.block} />
           </Table>
         </ModalContainer>
       </Modal>

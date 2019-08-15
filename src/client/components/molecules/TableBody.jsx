@@ -32,12 +32,7 @@ const Body = props => {
   console.log();
   return (
     <TableBody>
-      <TableRow
-        hover
-        onClick={() => {
-          // props.setBlock(props.value);
-        }}
-      >
+      <TableRow hover>
         <TableCell>{data.subject[0].class}</TableCell>
         <TableCell>{data.subject[0].name}</TableCell>
         <TableCell>{data.subject[0].credit}</TableCell>

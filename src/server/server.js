@@ -6,15 +6,63 @@ const path = require("path");
 // from an existing data source like a REST API or database.
 const subjects = [
   {
+    name: "国語A",
+    block: "I_A",
+    class: "国語",
+    credit: 1
+  },
+  {
     name: "数学A",
     block: "I_A",
     class: "数学",
     credit: 1
   },
   {
-    name: "国語",
+    name: "社会A",
+    block: "I_A",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "理科A",
+    block: "I_A",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "英語A",
+    block: "I_A",
+    class: "英語",
+    credit: 1
+  },
+  {
+    name: "国語B",
     block: "I_B",
     class: "国語",
+    credit: 1
+  },
+  {
+    name: "数学B",
+    block: "I_B",
+    class: "数学",
+    credit: 1
+  },
+  {
+    name: "社会B",
+    block: "I_B",
+    class: "社会",
+    credit: 1
+  },
+  {
+    name: "理科B",
+    block: "I_B",
+    class: "理科",
+    credit: 1
+  },
+  {
+    name: "英語B",
+    block: "I_B",
+    class: "英語",
     credit: 1
   }
 ];
