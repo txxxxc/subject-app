@@ -45,6 +45,7 @@ const GridChild = props => {
               value={props.value}
               block={props.block}
               setBlock={props.setBlock}
+              handleClose={handleClose}
             />
           </Table>
         </ModalContainer>

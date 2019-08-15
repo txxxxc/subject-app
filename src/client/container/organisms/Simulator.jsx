@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import GridChild from "client/components/molecules/GridChild";
 import GridFlex from "client/components/molecules/GridFlex";
 import GridDummy from "client/components/molecules/GridDummy";
-import { amBlocks, pmBlocks } from "client/config/blocks";
+import { amBlocks, pmBlocks, allBlocks } from "client/config/blocks";
 
 const Simulator = () => {
   const [I_A, setI_A] = useState("");
@@ -20,6 +20,17 @@ const Simulator = () => {
   const [V_B, setV_B] = useState("");
   const [VI, setVI] = useState("");
   const [LHR, setLHR] = useState("");
+
+  useEffect(() => {
+    allBlocks.map(value => {
+      let subject = localStorage[value];
+      console.log(subject);
+      if (subject) {
+        eval(`set${value}`)(subject);
+      }
+    });
+  }, []);
+
   const initializeAmGrid = blocks => {
     const amItems = [];
     blocks.map((block, index) => {

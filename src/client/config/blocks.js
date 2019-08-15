@@ -9,3 +9,17 @@ export const pmBlocks = [
   ["VI", "VI", "V_B", "III_B", "I_B"],
   ["LHR", "III_B", "I_B", "VI", "III_A"]
 ];
+
+export const allBlocks = [
+  "I_A",
+  "I_B",
+  "II_A",
+  "II_B",
+  "III_A",
+  "III_B",
+  "IV_A",
+  "IV_B",
+  "V_A",
+  "V_B",
+  "VI"
+];

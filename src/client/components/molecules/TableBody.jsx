@@ -21,22 +21,29 @@ const Body = props => {
     variables: { block: props.block }
   });
 
+  const saveOnLocalStorage = (block, name) => {
+    localStorage.setItem(block, name);
+  };
+  console.log(localStorage.I_A);
+
   if (loading) {
     return <div>loading</div>;
   }
   const rows = [];
-  data.subject.map(i => {
-    console.log(i.name);
+  data.subject.map(subject => {
+    console.log(subject.name);
     rows.push(
       <TableRow
         hover
         onClick={() => {
-          props.setBlock(i.name);
+          props.setBlock(subject.name);
+          props.handleClose();
+          saveOnLocalStorage(props.block, subject.name);
         }}
       >
-        <TableCell>{i.class}</TableCell>
-        <TableCell>{i.name}</TableCell>
-        <TableCell>{i.credit}</TableCell>
+        <TableCell>{subject.class}</TableCell>
+        <TableCell>{subject.name}</TableCell>
+        <TableCell>{subject.credit}</TableCell>
       </TableRow>
     );
   });
