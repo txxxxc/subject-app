@@ -33,7 +33,6 @@ const Body = props => {
   return (
     <TableBody>
       <TableRow hover onClick={() => {
-        console.log("hoge");
         props.setBlock(data.subject[0].name)
       }}>
         <TableCell>{data.subject[0].class}</TableCell>
