@@ -16,7 +16,6 @@ const GridChild = props => {
   const handleOpen = () => {
     setOpen(true);
   };
-  console.log("hoge");
 
   const handleClose = () => {
     setOpen(false);
@@ -42,7 +41,11 @@ const GridChild = props => {
         <ModalContainer>
           <Table>
             <Head />
-            <Body value={props.value} block={props.block} setBlock={props.setBlock}/>
+            <Body
+              value={props.value}
+              block={props.block}
+              setBlock={props.setBlock}
+            />
           </Table>
         </ModalContainer>
       </Modal>

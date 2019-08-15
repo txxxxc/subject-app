@@ -4,10 +4,6 @@ import gql from "graphql-tag";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Button from "@material-ui/core/Button";
 
 const GET_SUBJECT = gql`
   query($block: String!) {
@@ -21,7 +17,6 @@ const GET_SUBJECT = gql`
 `;
 
 const Body = props => {
-
   const { data, error, loading } = useQuery(GET_SUBJECT, {
     variables: { block: props.block }
   });
@@ -29,18 +24,24 @@ const Body = props => {
   if (loading) {
     return <div>loading</div>;
   }
-  console.log();
-  return (
-    <TableBody>
-      <TableRow hover onClick={() => {
-        props.setBlock(data.subject[0].name)
-      }}>
-        <TableCell>{data.subject[0].class}</TableCell>
-        <TableCell>{data.subject[0].name}</TableCell>
-        <TableCell>{data.subject[0].credit}</TableCell>
+  const rows = [];
+  data.subject.map(i => {
+    console.log(i.name);
+    rows.push(
+      <TableRow
+        hover
+        onClick={() => {
+          props.setBlock(i.name);
+        }}
+      >
+        <TableCell>{i.class}</TableCell>
+        <TableCell>{i.name}</TableCell>
+        <TableCell>{i.credit}</TableCell>
       </TableRow>
-    </TableBody>
-  );
+    );
+  });
+
+  return <TableBody>{rows}</TableBody>;
 };
 
 export default Body;
