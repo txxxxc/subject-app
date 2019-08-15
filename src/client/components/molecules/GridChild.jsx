@@ -25,7 +25,6 @@ const GridChild = props => {
   const test = () => {
     handleOpen();
   };
-  props.setBlock("test");
   return (
     <Child item xs={props.xs}>
       <CardContainer>
@@ -43,7 +42,7 @@ const GridChild = props => {
         <ModalContainer>
           <Table>
             <Head />
-            <Body value={props.value} block={props.block} />
+            <Body value={props.value} block={props.block} setBlock={props.setBlock}/>
           </Table>
         </ModalContainer>
       </Modal>
