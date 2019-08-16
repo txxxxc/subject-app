@@ -13,7 +13,6 @@ const Body = props => {
   const saveOnLocalStorage = (block, name) => {
     localStorage.setItem(block, name);
   };
-  console.log(data);
 
   if (loading) {
     return <div>loading</div>;

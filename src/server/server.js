@@ -197,22 +197,18 @@ const typeDefs = gql`
     credit: Int
   }
 
-  type SearchKeywords {
-    type: String
-    value: String
-  }
-
-  type Words {
-    word: [SearchKeywords]
-  }
-
   type Query {
     subjects: [Subject]!
     searchSubjectsByBlock(block: String): [Subject]
     searchSubjectsByName(name: String): [Subject]
     searchSubjectsByClass(class: String): [Subject]
     searchSubjectsByCredit(credit: String): [Subject]
-    searchSubject(type: String, value: String): [Subject]
+    searchSubject(
+      name: String
+      block: String
+      class: String
+      credit: Int
+    ): [Subject]
   }
 `;
 
@@ -244,15 +240,38 @@ const resolvers = {
       return subjects.filter(subject => {
         return subject.credit === args.credit;
       });
-      r;
     },
     searchSubject: (_, args) => {
-      currentSubjects = [];
-      args.queries.map(query => {
-        if (query.type === "block") {
-        } else if (query.type === "name") {
-        }
-      });
+      let filteredSubjects = subjects;
+      if (args.name) {
+        console.log("args.name", args.name);
+        filteredSubjects = filteredSubjects.filter(subject => {
+          return subject.name === args.name;
+        });
+        console.log("filteredSubject", filteredSubjects);
+      }
+      if (args.block) {
+        console.log("args.block", args.block);
+        filteredSubjects = filteredSubjects.filter(subject => {
+          return subject.block === args.block;
+        });
+        console.log("filteredSubject", filteredSubjects);
+      }
+      if (args.class) {
+        console.log("args.class", args.class);
+        filteredSubjects = filteredSubjects.filter(subject => {
+          return subject.class === args.class;
+        });
+        console.log("filteredSubject", filteredSubjects);
+      }
+      if (args.credit) {
+        console.log("args.credit", args.credit);
+        filteredSubjects.filter(subject => {
+          return subject.credit === args.credit;
+        });
+        console.log("filteredSubject", filteredSubjects);
+      }
+      return filteredSubjects;
     }
   }
 };

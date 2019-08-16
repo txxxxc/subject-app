@@ -23,7 +23,6 @@ const Simulator = () => {
   useEffect(() => {
     allBlocks.map(value => {
       let subject = localStorage[value];
-      console.log(subject);
       if (subject) {
         eval(`set${value}`)(subject);
       }

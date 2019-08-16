@@ -19,8 +19,7 @@ const Browser = () => {
     setValue(newValue);
   }
 
-  const [blockValue, setBlockValue] = React.useState("");
-  console.log(blockValue);
+  const [block, setBlockValue] = React.useState("I_A");
 
   const ChangeBlockValue = event => {
     setBlockValue(event.target.value);
@@ -52,11 +51,11 @@ const Browser = () => {
       <Box value={value} hidden={0 !== value}>
         <Form>
           <InputLabel htmlFor="age-simple">ブロック</InputLabel>
-          <Select value={blockValue} onChange={ChangeBlockValue}>
+          <Select value={block} onChange={ChangeBlockValue}>
             {menuItems}
           </Select>
         </Form>
-        <BrowseResult blockValue={blockValue} />
+        <BrowseResult block={block} />
       </Box>
       <Box value={value} hidden={1 !== value} />
       <Box value={value} hidden={2 !== value} />
