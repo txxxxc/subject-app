@@ -6,151 +6,151 @@ const path = require("path");
 // from an existing data source like a REST API or database.
 const subjects = [
   {
-    name: "道徳",
+    name: "国語",
     block: "I_A",
     class: "国語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "数学",
     block: "I_A",
     class: "数学",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "社会",
     block: "I_A",
     class: "社会",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "理科",
     block: "I_A",
     class: "理科",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "英語",
     block: "I_A",
     class: "英語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "国語",
     block: "I_B",
     class: "国語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "数学",
     block: "I_B",
     class: "数学",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "社会",
     block: "I_B",
     class: "社会",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "理科",
     block: "I_B",
     class: "理科",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "英語",
     block: "I_B",
     class: "英語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "国語",
     block: "II_A",
     class: "国語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "数学",
     block: "II_A",
     class: "数学",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "社会",
     block: "II_A",
     class: "社会",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "理科",
     block: "II_A",
     class: "理科",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "英語",
     block: "II_A",
     class: "英語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "国語",
     block: "II_B",
     class: "国語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "数学",
     block: "II_B",
     class: "数学",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "社会",
     block: "II_B",
     class: "社会",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "理科",
     block: "II_B",
     class: "理科",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "英語",
     block: "II_B",
     class: "英語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "国語",
     block: "III_A",
     class: "国語",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "数学",
     block: "III_A",
     class: "数学",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "社会",
     block: "III_A",
     class: "社会",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "理科",
     block: "III_A",
     class: "理科",
     credit: 1
   },
   {
-    name: "道徳",
+    name: "英語",
     block: "III_A",
     class: "英語",
     credit: 1

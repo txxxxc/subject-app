@@ -46,9 +46,9 @@ export const SEARCH_SUBJECTS_BY_CREDIT = gql`
 
 export const SEARCH_SUBJECT = gql`
   # query($name: String, $block: String, $class: String, $credit: String) {
-  query($name: String, $block: String, $class: String, $credit: String) {
+  query($name: String, $block: String, $class: String) {
     # searchSubject(name: $name, block: $block, class: $class, credit: $credit) {
-    searchSubject(name: $name, block: $block, class: $class, credit: $credit) {
+    searchSubject(name: $name, block: $block, class: $class) {
       name
       block
       class

@@ -19,7 +19,9 @@ const Browser = () => {
     setValue(newValue);
   }
 
-  const [block, setBlockValue] = React.useState("I_A");
+  const [nameValue, setNameValue] = React.useState("");
+  const [blockValue, setBlockValue] = React.useState("");
+  const [classValue, setClassValue] = React.useState("");
 
   const ChangeBlockValue = event => {
     setBlockValue(event.target.value);
@@ -50,12 +52,12 @@ const Browser = () => {
 
       <Box value={value} hidden={0 !== value}>
         <Form>
-          <InputLabel htmlFor="age-simple">ブロック</InputLabel>
-          <Select value={block} onChange={ChangeBlockValue}>
+          <InputLabel>ブロック</InputLabel>
+          <Select value={blockValue} onChange={ChangeBlockValue}>
             {menuItems}
           </Select>
         </Form>
-        <BrowseResult block={block} />
+        <BrowseResult name={nameValue} block={blockValue} class={classValue} />
       </Box>
       <Box value={value} hidden={1 !== value} />
       <Box value={value} hidden={2 !== value} />
@@ -71,7 +73,7 @@ const Container = styled.div`
 `;
 const Form = styled(FormControl)`
   width: 100%;
-  height: 100px;
+  height: 50px;
   border: black 1px;
 `;
 

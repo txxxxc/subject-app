@@ -24,7 +24,10 @@ const httpLink = createHttpLink({
 
 const client = new ApolloClient({
   link: ApolloLink.from([httpLink]),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  onError: e => {
+    console.log(e);
+  }
 });
 
 const App = () => (
