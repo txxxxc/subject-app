@@ -1,12 +1,13 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const webpack = require("webpack");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.js",
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    path: path.resolve("dist"),
-    filename: "main.js"
+    path: path.resolve('dist'),
+    filename: 'main.js'
   },
   module: {
     rules: [
@@ -14,29 +15,29 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
   devtool: false,
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html"
+      template: './src/index.html'
     }),
     new webpack.SourceMapDevToolPlugin({})
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
     alias: {
-      client: path.resolve(__dirname, "../src/client")
+      client: path.resolve(__dirname, '../src/client')
     }
   },
   devServer: {

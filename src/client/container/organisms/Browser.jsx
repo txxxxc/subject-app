@@ -1,16 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Box from "@material-ui/core/Box";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import { withStyles } from "@material-ui/core/styles";
+import React from 'react';
+import styled from 'styled-components';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
-import { allBlocks } from "client/config/blocks";
-import BrowseResult from "client/container/organisms/BrowseResult";
+import { allBlocks, allSubjects } from 'client/config/blocks';
+import BrowseResult from 'client/components/molecules/BrowseResult';
 
 const Browser = () => {
   const [value, setValue] = React.useState(0);
@@ -19,12 +19,14 @@ const Browser = () => {
     setValue(newValue);
   }
 
-  const [nameValue, setNameValue] = React.useState("");
-  const [blockValue, setBlockValue] = React.useState("");
-  const [classValue, setClassValue] = React.useState("");
+  const [searchValues, setSearchValues] = React.useState({
+    name: '',
+    class: '',
+    block: ''
+  });
 
-  const ChangeBlockValue = event => {
-    setBlockValue(event.target.value);
+  const setValues = name => event => {
+    setSearchValues({ ...searchValues, [name]: event.target.value });
   };
 
   const menuItems = [];
@@ -50,15 +52,46 @@ const Browser = () => {
         <BrowseTab label="ブロック順" />
       </Tabs>
 
-      <Box value={value} hidden={0 !== value}>
+      <BrowseBox value={value} hidden={0 !== value}>
+        <TextField label="Name" onChange={setValues('name')} />
         <Form>
           <InputLabel>ブロック</InputLabel>
-          <Select value={blockValue} onChange={ChangeBlockValue}>
-            {menuItems}
+          <Select
+            label="block"
+            value={searchValues.block}
+            onChange={setValues('block')}
+          >
+            {allBlocks.map((value, index) => {
+              return (
+                <MenuItem value={value} key={index}>
+                  {value}
+                </MenuItem>
+              );
+            })}
           </Select>
         </Form>
-        <BrowseResult name={nameValue} block={blockValue} class={classValue} />
-      </Box>
+        <Form>
+          <InputLabel>教科</InputLabel>
+          <Select
+            label="class"
+            value={searchValues.block}
+            onChange={setValues('class')}
+          >
+            {allSubjects.map((value, index) => {
+              return (
+                <MenuItem value={value} key={index}>
+                  {value}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </Form>
+        <BrowseResult
+          name={searchValues.name}
+          block={searchValues.block}
+          class={searchValues.class}
+        />
+      </BrowseBox>
       <Box value={value} hidden={1 !== value} />
       <Box value={value} hidden={2 !== value} />
     </Container>
@@ -73,8 +106,12 @@ const Container = styled.div`
 `;
 const Form = styled(FormControl)`
   width: 100%;
-  height: 50px;
+  height: 80px;
   border: black 1px;
+`;
+
+const BrowseBox = styled(Box)`
+  height: 400px;
 `;
 
 const BrowseTab = styled(Tab)``;
