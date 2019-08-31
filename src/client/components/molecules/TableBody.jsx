@@ -1,9 +1,9 @@
-import React from "react";
-import { useQuery } from "react-apollo-hooks";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
-import TableBody from "@material-ui/core/TableBody";
-import { SEARCH_SUBJECTS_BY_BLOCK } from "client/graphql/query";
+import React from 'react';
+import { useQuery } from 'react-apollo-hooks';
+import TableCell from '@material-ui/core/TableCell';
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import { SEARCH_SUBJECTS_BY_BLOCK } from 'client/graphql/query';
 
 const Body = props => {
   const { data, error, loading } = useQuery(SEARCH_SUBJECTS_BY_BLOCK, {
@@ -23,7 +23,8 @@ const Body = props => {
       <TableRow
         hover
         onClick={() => {
-          props.setBlock(searchSubjectsByBlock.name);
+          console.log(props.block);
+          props.setSubject(props.block, searchSubjectsByBlock.name);
           props.handleClose();
           saveOnLocalStorage(props.block, searchSubjectsByBlock.name);
         }}

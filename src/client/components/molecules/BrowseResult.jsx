@@ -16,7 +16,6 @@ const BrowseResult = props => {
 
   data &&
     data.searchSubject.map((block, index) => {
-      console.log(index);
       searchSubjectResults.push(
         <>
           <ListItem key={index}>

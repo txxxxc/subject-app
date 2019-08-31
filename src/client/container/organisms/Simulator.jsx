@@ -1,37 +1,46 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { Grid } from "@material-ui/core";
-import GridChild from "client/components/molecules/GridChild";
-import GridFlex from "client/components/molecules/GridFlex";
-import GridDummy from "client/components/molecules/GridDummy";
-import { amBlocks, pmBlocks, allBlocks } from "client/config/blocks";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Grid } from '@material-ui/core';
+import GridChild from 'client/components/molecules/GridChild';
+import GridFlex from 'client/components/molecules/GridFlex';
+import GridDummy from 'client/components/molecules/GridDummy';
+import { amBlocks, pmBlocks, allBlocks } from 'client/config/blocks';
 
 const Simulator = () => {
-  const [I_A, setI_A] = useState("");
-  const [I_B, setI_B] = useState("");
-  const [II_A, setII_A] = useState("");
-  const [II_B, setII_B] = useState("");
-  const [III_A, setIII_A] = useState("");
-  const [III_B, setIII_B] = useState("");
-  const [IV_A, setIV_A] = useState("");
-  const [IV_B, setIV_B] = useState("");
-  const [V_A, setV_A] = useState("");
-  const [V_B, setV_B] = useState("");
-  const [VI, setVI] = useState("");
-  const [LHR, setLHR] = useState("");
+  const [blocks, setBlocks] = useState({
+    I_A: '',
+    I_B: '',
+    II_A: '',
+    II_B: '',
+    III_A: '',
+    III_B: '',
+    IV_A: '',
+    IV_B: '',
+    V_A: '',
+    V_B: '',
+    VI: '',
+    LHR: ''
+  });
+
+  const setSubject = (block, name) => {
+    console.log(`${name}を${block}に挿入します `);
+    console.log('before', blocks);
+    setBlocks({ ...blocks, [block]: name });
+    console.log('after', blocks);
+  };
 
   useEffect(() => {
-    allBlocks.map(value => {
-      let subject = localStorage[value];
-      if (subject) {
-        eval(`set${value}`)(subject);
+    allBlocks.map(block => {
+      let subjectName = localStorage[block];
+      if (subjectName) {
+        setSubject(block, subjectName);
       }
     });
   }, []);
 
-  const initializeAmGrid = blocks => {
+  const initializeAmGrid = blockNames => {
     const amItems = [];
-    blocks.map((block, index) => {
+    blockNames.map((block, index) => {
       amItems.push(<GridDummy item xs={1} key={`am-first-${index}`} />);
       block.map((value, i) => {
         amItems.push(
@@ -41,9 +50,10 @@ const Simulator = () => {
             key={`${index}-${i}`}
             value={value}
             block={value}
-            setBlock={eval(`set${value}`)}
+            setSubject={setSubject}
           >
-            {eval(value)}
+            {/* hoge[value] ならいけるけど、hoge.valueだと無理 */}
+            {blocks[value]}
           </GridChild>
         );
       });
@@ -51,9 +61,9 @@ const Simulator = () => {
     });
     return amItems;
   };
-  const initializePmGrid = blocks => {
+  const initializePmGrid = blockNames => {
     const pmItems = [];
-    blocks.map((block, index) => {
+    blockNames.map((block, index) => {
       pmItems.push(<GridDummy item xs={1} key={`pm-first-${index}`} />);
       block.map((value, i) => {
         pmItems.push(
@@ -63,9 +73,9 @@ const Simulator = () => {
             key={`${index}-${i}`}
             value={value}
             block={value}
-            setBlock={eval(`set${value}`)}
+            setBlock={setSubject}
           >
-            {eval(value)}
+            {blocks[value]}
           </GridChild>
         );
       });
@@ -75,6 +85,7 @@ const Simulator = () => {
   };
   const amResult = initializeAmGrid(amBlocks);
   const pmResult = initializePmGrid(pmBlocks);
+  console.log(blocks);
   return (
     <Container>
       <Grid container justify="center">

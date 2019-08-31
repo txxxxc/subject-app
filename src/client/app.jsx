@@ -1,25 +1,25 @@
-import React from "react";
-import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloLink } from "apollo-link";
-import { ApolloClient } from "apollo-client";
-import { createHttpLink } from "apollo-link-http";
-import { ApolloProvider } from "react-apollo";
+import React from 'react';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloLink } from 'apollo-link';
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http';
+import { ApolloProvider } from 'react-apollo';
 import {
   ThemeProvider as MaterialThemeProvider,
   StylesProvider
-} from "@material-ui/styles";
+} from '@material-ui/styles';
 import styled, {
   ThemeProvider as StyledThemeProvider
-} from "styled-components";
+} from 'styled-components';
 
-import Home from "./container/templates/Home";
-import "./reset.css";
-import theme from "./config/theme";
+import Home from './container/templates/Home';
+import './reset.css';
+import theme from './config/theme';
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
-  credentials: "same-origin"
+  uri: 'http://localhost:4000/graphql',
+  credentials: 'same-origin'
 });
 
 const client = new ApolloClient({

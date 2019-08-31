@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Grid } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import Modal from "@material-ui/core/Modal";
-import Table from "@material-ui/core/Table";
-import Body from "client/components/molecules/TableBody";
-import Head from "client/components/molecules/TableHead";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Grid } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Modal from '@material-ui/core/Modal';
+import Table from '@material-ui/core/Table';
+import Body from 'client/components/molecules/TableBody';
+import Head from 'client/components/molecules/TableHead';
 
 const GridChild = props => {
   const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ const GridChild = props => {
             <Body
               value={props.value}
               block={props.block}
-              setBlock={props.setBlock}
+              setSubject={props.setSubject}
               handleClose={handleClose}
             />
           </Table>
