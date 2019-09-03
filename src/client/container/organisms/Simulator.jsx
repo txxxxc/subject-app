@@ -25,7 +25,10 @@ const Simulator = () => {
   const setSubject = (block, name) => {
     console.log(`${name}を${block}に挿入します `);
     console.log('before', blocks);
-    setBlocks({ ...blocks, [block]: name });
+    //setBlocksのところに問題ありそう
+    setBlocks(prevState => {
+      return { ...prevState, [block]: name };
+    });
     console.log('after', blocks);
   };
 
@@ -33,6 +36,7 @@ const Simulator = () => {
     allBlocks.map(block => {
       let subjectName = localStorage[block];
       if (subjectName) {
+        //localStorageには保存されているけどそれをsetできない
         setSubject(block, subjectName);
       }
     });
@@ -85,6 +89,7 @@ const Simulator = () => {
   };
   const amResult = initializeAmGrid(amBlocks);
   const pmResult = initializePmGrid(pmBlocks);
+  //どうしてこの時点で一つだけ授業が記憶されているのか
   console.log(blocks);
   return (
     <Container>
