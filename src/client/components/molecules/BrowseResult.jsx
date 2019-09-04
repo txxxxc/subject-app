@@ -9,7 +9,12 @@ import Divider from '@material-ui/core/Divider';
 
 const BrowseResult = props => {
   const { data, error, loading } = useQuery(SEARCH_SUBJECT, {
-    variables: { name: props.name, block: props.block, class: props.class }
+    variables: {
+      name: props.name,
+      block: props.block,
+      class: props.class,
+      credit: 1
+    }
   });
 
   const searchSubjectResults = [];
