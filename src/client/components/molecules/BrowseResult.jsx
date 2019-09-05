@@ -25,7 +25,7 @@ const BrowseResult = props => {
         <>
           <ListItem key={index}>
             <ListItemText
-              primary={`${block.name} ${block.block} ${block.class}`}
+              primary={`${block.block} ${block.name}`}
               key={`itemText-${index}`}
             />
           </ListItem>

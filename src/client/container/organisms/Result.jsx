@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Typography from '@material-ui/core/Typography';
 
-const Result = () => {
+const Result = props => {
   return (
     <Container>
       <Content>
-        <Typography variant="h2" gutterBottom>
-          取得単位
+        <Typography variant="h5" gutterBottom>
+          取得単位: {props.length}
         </Typography>
-        <Typography variant="h2" gutterBottom>
-          合計休み時間
+        <Typography variant="h5" gutterBottom>
+          合計休み時間: {props.unSchedule}
         </Typography>
       </Content>
     </Container>

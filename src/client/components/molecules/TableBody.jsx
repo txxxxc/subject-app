@@ -23,7 +23,6 @@ const Body = props => {
       <TableRow
         hover
         onClick={() => {
-          console.log(props.block);
           props.setSubject(props.block, searchSubjectsByBlock.name);
           props.handleClose();
           saveOnLocalStorage(props.block, searchSubjectsByBlock.name);
@@ -35,7 +34,7 @@ const Body = props => {
       </TableRow>
     );
   });
-
+  console.log(props.block);
   return <TableBody>{rows}</TableBody>;
 };
 

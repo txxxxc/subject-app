@@ -6,7 +6,7 @@ import GridFlex from 'client/components/molecules/GridFlex';
 import GridDummy from 'client/components/molecules/GridDummy';
 import { amBlocks, pmBlocks, allBlocks } from 'client/config/blocks';
 
-const Simulator = () => {
+const Simulator = props => {
   const [blocks, setBlocks] = useState({
     I_A: '',
     I_B: '',
@@ -23,14 +23,22 @@ const Simulator = () => {
   });
 
   const setSubject = (block, name) => {
-    console.log(`${name}を${block}に挿入します `);
-    console.log('before', blocks);
-    //setBlocksのところに問題ありそう
     setBlocks(prevState => {
       return { ...prevState, [block]: name };
     });
-    console.log('after', blocks);
   };
+
+  let blocksLength = 0;
+  let unSchedule = 0;
+  for (let key in blocks) {
+    if (blocks[key] === '') {
+      unSchedule += 3;
+    } else {
+      blocksLength++;
+    }
+  }
+  props.setLength(blocksLength);
+  props.setUnSchedule(unSchedule);
 
   useEffect(() => {
     allBlocks.map(block => {
@@ -77,7 +85,7 @@ const Simulator = () => {
             key={`${index}-${i}`}
             value={value}
             block={value}
-            setBlock={setSubject}
+            setSubject={setSubject}
           >
             {blocks[value]}
           </GridChild>
@@ -89,8 +97,7 @@ const Simulator = () => {
   };
   const amResult = initializeAmGrid(amBlocks);
   const pmResult = initializePmGrid(pmBlocks);
-  //どうしてこの時点で一つだけ授業が記憶されているのか
-  console.log(blocks);
+
   return (
     <Container>
       <Grid container justify="center">

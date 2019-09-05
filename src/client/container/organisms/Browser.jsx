@@ -26,6 +26,7 @@ const Browser = () => {
   });
 
   const setValues = name => event => {
+    console.log(name);
     setSearchValues({ ...searchValues, [name]: event.target.value });
   };
 
@@ -74,7 +75,7 @@ const Browser = () => {
           <InputLabel>教科</InputLabel>
           <Select
             label="class"
-            value={searchValues.block}
+            value={searchValues.class}
             onChange={setValues('class')}
           >
             {allSubjects.map((value, index) => {

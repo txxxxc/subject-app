@@ -1,20 +1,22 @@
-import React from "react";
-import gql from "graphql-tag";
-import styled from "styled-components";
-import Nav from "client/container/organisms/Nav";
-import Result from "client/container/organisms/Result";
-import Simulator from "client/container/organisms/Simulator";
-import Browser from "client/container/organisms/Browser";
+import React, { useState } from 'react';
+import gql from 'graphql-tag';
+import styled from 'styled-components';
+import Nav from 'client/container/organisms/Nav';
+import Result from 'client/container/organisms/Result';
+import Simulator from 'client/container/organisms/Simulator';
+import Browser from 'client/container/organisms/Browser';
 
 const Home = () => {
+  const [length, setLength] = useState(0);
+  const [unSchedule, setUnSchedule] = useState(0);
   return (
     <Template>
       <Nav />
       <Content>
-        <Simulator />
+        <Simulator setLength={setLength} setUnSchedule={setUnSchedule} />
         <Browser />
       </Content>
-      <Result />
+      <Result length={length} unSchedule={unSchedule} />
     </Template>
   );
 };
