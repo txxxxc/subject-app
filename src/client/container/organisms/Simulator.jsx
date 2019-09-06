@@ -97,7 +97,7 @@ const Simulator = props => {
   };
   const amResult = initializeAmGrid(amBlocks);
   const pmResult = initializePmGrid(pmBlocks);
-
+  console.log('hoge');
   return (
     <Container>
       <Grid container justify="center">
