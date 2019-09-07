@@ -34,7 +34,6 @@ const Body = props => {
       </TableRow>
     );
   });
-  console.log(props.block);
   return <TableBody>{rows}</TableBody>;
 };
 
