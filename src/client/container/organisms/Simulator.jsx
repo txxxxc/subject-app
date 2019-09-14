@@ -57,61 +57,10 @@ const Simulator = props => {
       }
     });
   }, []);
-
-  const initializeAmGrid = blockNames => {
-    const amItems = [];
-    blockNames.map((block, index) => {
-      amItems.push(<GridDummy item xs={1} key={`am-first-${index}`} />);
-      block.map((value, i) => {
-        amItems.push(
-          <GridChild
-            item
-            xs={2}
-            key={`${index}-${i}`}
-            value={value}
-            block={value}
-            setSubject={setSubject}
-            clearBlock={clearBlock}
-          >
-            {blocks[value]}
-          </GridChild>
-        );
-      });
-      amItems.push(<GridDummy item xs={1} key={`am-last-${index}`} />);
-    });
-    return amItems;
-  };
-  const initializePmGrid = blockNames => {
-    const pmItems = [];
-    blockNames.map((block, index) => {
-      pmItems.push(<GridDummy item xs={1} key={`pm-first-${index}`} />);
-      block.map((value, i) => {
-        pmItems.push(
-          <GridChild
-            item
-            xs={2}
-            key={`${index}-${i}`}
-            value={value}
-            block={value}
-            setSubject={setSubject}
-            clearBlock={clearBlock}
-          >
-            {blocks[value]}
-          </GridChild>
-        );
-      });
-      pmItems.push(<GridDummy item xs={1} key={`pm-last-${index}`} />);
-    });
-    return pmItems;
-  };
-  // const amResult = initializeAmGrid(amBlocks);
-  const pmResult = initializePmGrid(pmBlocks);
   return (
     <Container>
       <Grid container justify="center">
         {amBlocks.map(blockColumn => {
-          console.log(blockColumn);
-
           return (
             <GridColumn
               blockColumn={blockColumn}
@@ -122,7 +71,16 @@ const Simulator = props => {
           );
         })}
         <GridFlex />
-        {pmResult}
+        {pmBlocks.map(blockColumn => {
+          return (
+            <GridColumn
+              blockColumn={blockColumn}
+              blocks={blocks}
+              setSubject={setSubject}
+              clearBlock={clearBlock}
+            />
+          );
+        })}
       </Grid>
     </Container>
   );

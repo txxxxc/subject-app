@@ -17,28 +17,34 @@ const BrowseResult = props => {
     }
   });
 
-  const searchSubjectResults = [];
+  if (loading) {
+    return <p>loading</p>;
+  }
 
-  data &&
-    data.searchSubject.map((block, index) => {
-      searchSubjectResults.push(
-        <>
-          <ListItem key={index}>
-            <ListItemText
-              primary={`${block.block} ${block.name}`}
-              key={`itemText-${index}`}
-            />
-          </ListItem>
-          <Divider key={`divider-${index}`} />
-        </>
-      );
-    });
-  return <ResultList component="nav">{searchSubjectResults}</ResultList>;
+  return (
+    <ResultList>
+      {data.searchSubject.map((block, index) => {
+        return (
+          <div key={index}>
+            <ListItem key={`ListItem${index}`}>
+              <ListItemText
+                primary={`${block.block} ${block.name}`}
+                key={`itemText-${index}`}
+              />
+            </ListItem>
+            <Divider key={`divider-${index}`} />
+          </div>
+        );
+      })}
+    </ResultList>
+  );
 };
 
 const ResultList = styled(List)`
   height: 405px;
   overflow: auto;
 `;
+
+const Item = styled(ListItem)``;
 
 export default BrowseResult;

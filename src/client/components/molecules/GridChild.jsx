@@ -7,7 +7,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import Table from '@material-ui/core/Table';
-import Clear from '@material-ui/icons/Clear';
+import Delete from '@material-ui/icons/Delete';
 
 import Body from 'client/components/molecules/TableBody';
 import Head from 'client/components/molecules/TableHead';
@@ -67,7 +67,7 @@ const Child = styled(Grid)`
   position: relative;
 `;
 
-const RemoveButton = styled(Clear)`
+const RemoveButton = styled(Delete)`
   position: absolute;
   left: 80%;
   z-index: 10;

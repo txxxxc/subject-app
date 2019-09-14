@@ -3,8 +3,6 @@ import GridChild from 'client/components/molecules/GridChild';
 import GridDummy from 'client/components/molecules/GridDummy';
 
 const GridColumn = props => {
-  console.log(props.blockColumn);
-
   return (
     <>
       <GridDummy item xs={1} />
@@ -12,6 +10,7 @@ const GridColumn = props => {
         <GridChild
           item
           xs={2}
+          key={value + i}
           value={value}
           block={value}
           setSubject={props.setSubject}
