@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-
 import { allBlocks, allSubjects } from 'client/config/blocks';
 import BrowseResult from 'client/components/molecules/BrowseResult';
+import Typography from '@material-ui/core/Typography';
 
 const Browser = () => {
   const [value, setValue] = React.useState(0);
@@ -42,17 +39,7 @@ const Browser = () => {
 
   return (
     <Container>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        scrollButtons="on"
-        variant="scrollable"
-      >
-        <BrowseTab label="すべて" />
-        <BrowseTab label="教科順" />
-        <BrowseTab label="ブロック順" />
-      </Tabs>
-
+      <Typography variant="h6">検索</Typography>
       <BrowseBox value={value} hidden={0 !== value}>
         <TextField label="Name" onChange={setValues('name')} />
         <Form>
@@ -93,8 +80,6 @@ const Browser = () => {
           class={searchValues.class}
         />
       </BrowseBox>
-      <Box value={value} hidden={1 !== value} />
-      <Box value={value} hidden={2 !== value} />
     </Container>
   );
 };
@@ -111,9 +96,7 @@ const Form = styled(FormControl)`
   border: black 1px;
 `;
 
-const BrowseBox = styled(Box)`
+const BrowseBox = styled.div`
   height: 400px;
 `;
-
-const BrowseTab = styled(Tab)``;
 export default Browser;

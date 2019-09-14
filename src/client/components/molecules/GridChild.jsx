@@ -7,6 +7,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import Table from '@material-ui/core/Table';
+import Clear from '@material-ui/icons/Clear';
+
 import Body from 'client/components/molecules/TableBody';
 import Head from 'client/components/molecules/TableHead';
 
@@ -26,11 +28,17 @@ const GridChild = props => {
   };
   return (
     <Child item xs={props.xs}>
+      <RemoveButton
+        fontSize="large"
+        color="primary"
+        onClick={() => props.clearBlock(props.value)}
+        //()
+      />
       <CardContainer>
         <ActionArea onClick={test}>
           <TextArea>
             <BlockText variant="h6">{props.value}</BlockText>
-            <SubjectText variant="h5" align="center">
+            <SubjectText variant="subtitle1" align="center">
               {props.children}
             </SubjectText>
           </TextArea>
@@ -55,7 +63,15 @@ const GridChild = props => {
 };
 
 const Child = styled(Grid)`
-  height: 100px;
+  height: 110px;
+  position: relative;
+`;
+
+const RemoveButton = styled(Clear)`
+  position: absolute;
+  left: 80%;
+  z-index: 10;
+  cursor: pointer;
 `;
 
 const CardContainer = styled(Card)`

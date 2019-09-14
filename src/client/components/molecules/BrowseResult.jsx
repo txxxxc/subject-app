@@ -37,7 +37,7 @@ const BrowseResult = props => {
 };
 
 const ResultList = styled(List)`
-  height: 400px;
+  height: 405px;
   overflow: auto;
 `;
 

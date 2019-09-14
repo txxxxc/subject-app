@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core';
 import GridChild from 'client/components/molecules/GridChild';
 import GridFlex from 'client/components/molecules/GridFlex';
 import GridDummy from 'client/components/molecules/GridDummy';
+import GridColumn from 'client/components/molecules/GridColumn';
 import { amBlocks, pmBlocks, allBlocks } from 'client/config/blocks';
 
 const Simulator = props => {
@@ -40,6 +41,13 @@ const Simulator = props => {
   props.setLength(blocksLength);
   props.setUnSchedule(unSchedule);
 
+  const clearBlock = block => {
+    localStorage.removeItem(block);
+    setBlocks(prevState => {
+      return { ...prevState, [block]: '' };
+    });
+  };
+
   useEffect(() => {
     allBlocks.map(block => {
       let subjectName = localStorage[block];
@@ -63,8 +71,8 @@ const Simulator = props => {
             value={value}
             block={value}
             setSubject={setSubject}
+            clearBlock={clearBlock}
           >
-            {/* hoge[value] ならいけるけど、hoge.valueだと無理 */}
             {blocks[value]}
           </GridChild>
         );
@@ -86,6 +94,7 @@ const Simulator = props => {
             value={value}
             block={value}
             setSubject={setSubject}
+            clearBlock={clearBlock}
           >
             {blocks[value]}
           </GridChild>
@@ -95,13 +104,23 @@ const Simulator = props => {
     });
     return pmItems;
   };
-  const amResult = initializeAmGrid(amBlocks);
+  // const amResult = initializeAmGrid(amBlocks);
   const pmResult = initializePmGrid(pmBlocks);
-  console.log('hoge');
   return (
     <Container>
       <Grid container justify="center">
-        {amResult}
+        {amBlocks.map(blockColumn => {
+          console.log(blockColumn);
+
+          return (
+            <GridColumn
+              blockColumn={blockColumn}
+              blocks={blocks}
+              setSubject={setSubject}
+              clearBlock={clearBlock}
+            />
+          );
+        })}
         <GridFlex />
         {pmResult}
       </Grid>
