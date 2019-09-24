@@ -330,20 +330,16 @@ const resolvers = {
   }
 };
 const app = express();
+app.use('/', express.static('../../dist'));
 // In the most basic sense, the ApolloServer can be started
 // by passing type definitions (typeDefs) and the resolvers
 // responsible for fetching the data for those types.
 const server = new ApolloServer({ typeDefs, resolvers });
 
-app.get('/api', (req, res) => {
-  res.send({ api: 'test' });
-});
-
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
 
 server.applyMiddleware({ app }); // app is from an existing express app
+const port = process.env.PORT || 8000;
 
-app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
-);
+app.listen(port, () => console.log(`🚀 Server ready at ${port}`));
