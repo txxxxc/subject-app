@@ -27,7 +27,7 @@ module.exports = {
       }
     ]
   },
-  devtool: false,
+  devtool: true,
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html'
