@@ -16,8 +16,9 @@ import styled, {
 import Home from './container/templates/Home';
 import './reset.css';
 import theme from './config/theme';
-
-const port = `${process.env.PORT}/graphql` || 'http://localhost:4000/graphql';
+const port = (process.env.NODE_ENV = production
+  ? `${process.env.PORT}/graphql`
+  : 'http://localhost:4000/graphql');
 
 const httpLink = createHttpLink({
   uri: port,
