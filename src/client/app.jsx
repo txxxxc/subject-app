@@ -18,7 +18,7 @@ import './reset.css';
 import theme from './config/theme';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.PORT || 'http://localhost:4000/graphql',
   credentials: 'same-origin'
 });
 
