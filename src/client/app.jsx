@@ -17,8 +17,10 @@ import Home from './container/templates/Home';
 import './reset.css';
 import theme from './config/theme';
 
+const port = `${process.env.PORT}/graphql` || 'http://localhost:4000/graphql';
+
 const httpLink = createHttpLink({
-  uri: process.env.PORT || 'http://localhost:4000/graphql',
+  uri: port,
   credentials: 'same-origin'
 });
 
