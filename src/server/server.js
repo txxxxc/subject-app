@@ -270,25 +270,21 @@ const resolvers = {
   Query: {
     subjects: () => subjects,
     searchSubjectsByBlock: (_, args) => {
-      console.log(args.block);
       return subjects.filter(subject => {
         return subject.block === args.block;
       });
     },
     searchSubjectsByName: (_, args) => {
-      console.log(args.name);
       return subjects.filter(subject => {
         return subject.name === args.name;
       });
     },
     searchSubjectsByClass: (_, args) => {
-      console.log(args.class);
       return subjects.filter(subject => {
         return subject.class === args.class;
       });
     },
     searchSubjectsByCredit: (_, args) => {
-      console.log(args.credit);
       return subjects.filter(subject => {
         return subject.credit === args.credit;
       });
@@ -300,28 +296,21 @@ const resolvers = {
         filteredSubjects = filteredSubjects.filter(subject => {
           return subject.name === args.name;
         });
-        console.log('filteredSubject', filteredSubjects);
       }
       if (args.block) {
-        console.log('args.block', args.block);
         filteredSubjects = filteredSubjects.filter(subject => {
           return subject.block === args.block;
         });
-        console.log('filteredSubject', filteredSubjects);
       }
       if (args.class) {
-        console.log('args.class', args.class);
         filteredSubjects = filteredSubjects.filter(subject => {
           return subject.class === args.class;
         });
-        console.log('filteredSubject', filteredSubjects);
       }
       if (args.credit) {
-        console.log('args.credit', args.credit);
         filteredSubjects.filter(subject => {
           return subject.credit === args.credit;
         });
-        console.log('filteredSubject', filteredSubjects);
       }
       return filteredSubjects;
     }
@@ -338,4 +327,10 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 server.applyMiddleware({ app });
 
-app.listen({ port: 4000 }, () => console.log(`🚀 Server is runnning!!!`));
+const port = process.env.PORT || 4000;
+app.listen(port, () =>
+  console.log(
+    `🚀 Server is runnning!!!`,
+    ` process.env.PORT: ${process.env.PORT}`
+  )
+);
