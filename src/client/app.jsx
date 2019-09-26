@@ -17,9 +17,7 @@ import Home from './container/templates/Home';
 import './reset.css';
 import theme from './config/theme';
 
-const port = process.env.PORT
-  ? `https://subject-app.herokuapp.com/graphql`
-  : 'http://localhost:4000/graphql';
+const port = `https://subject-app.herokuapp.com/graphql`;
 
 const httpLink = createHttpLink({
   uri: port,
