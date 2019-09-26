@@ -1,17 +1,16 @@
-const merge = require("webpack-merge");
-const webpackConfig = require("./webpack.config.js");
+const merge = require('webpack-merge');
+const webpackConfig = require('./webpack.config.js');
 module.exports = merge(webpackConfig, {
-  mode: "development",
+  mode: 'development',
   devServer: {
     historyApiFallback: true,
     inline: true,
-    host: "localhost",
-    port: 8080,
+    host: 'subject-app.herokuapp.com',
     proxy: {
-      "/api/**": {
-        target: "http://localhost:4000",
+      '/api/**': {
+        target: 'https://subject-app.herokuapp.com',
         secure: false,
-        logLevel: "debug"
+        logLevel: 'debug'
       }
     }
   }
